@@ -36,7 +36,7 @@ GROUP BY item_name;
 SELECT avg(price)
 FROM superstore;
 
-#Show a statistic about the price for items in the category of "Kitchen Supplies". 
+#Show a statistic about the price for items in the category of "Electronics". 
 SELECT avg(price)
 FROM superstore
-WHERE category="Kitchen Supplies"
+WHERE category="Electronics"
