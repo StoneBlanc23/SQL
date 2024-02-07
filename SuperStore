@@ -27,10 +27,10 @@ VALUES
 
 #For this project, I used SQL to query the Superstore database to get information about items sold at the store and their prices. 
 
-#Use a SELECT statement to order the items by price.
-SELECT item_name, price
+#Use a SELECT statement to find the average rating of each item
+SELECT SUM(average_rating), item_name
 FROM superstore
-ORDER BY price desc;
+GROUP BY item_name;
 
 #Show a statistic about the item prices.
 SELECT avg(price)
