@@ -55,3 +55,36 @@ VALUES
     ('Company II', 'Telecommunications', 110.5, 2000, 1, 21, 12, 4.9),
     ('Company JJ', 'Manufacturing', 370.0, 3100, 1, 20, 12, 7.6),
     ('Company KK', 'Healthcare', 150.2, 3400, 0, 16, 8, 5.3);
+
+
+# For this project, I used SQL to query the Fortune 500 Company database to get information about the companies PTO, Maternity Leave, and Revenues.
+
+# Based on Paid Time Off Days, label each company as a "Great Place to Work" if over 20, "OK Place to Work" if over 15, and "Terrible Place to Work" if under 15 days of PTO. 
+
+SELECT company_name,
+CASE WHEN paid_time_off_days >=20 THEN "Great Place to Work" 
+WHEN paid_time_off_days >= 15 
+THEN "OK Place to Work"
+ELSE "Terrible Place to Work"
+END AS Paid_Time_Off
+FROM fortune_companies;
+
+# List companies that have 20 or more paid time off days and 10 or more maternity leave weeks
+
+SELECT company_name, paid_time_off_days, maternity_leave_weeks
+FROM fortune_companies
+WHERE paid_time_off_days >= 20 
+AND maternity_leave_weeks >=10;
+
+# List the Industries have an average revenue of at least $150 Billion, and what are their averages?
+
+SELECT industry, ROUND(AVG(revenue),1) as average_revenue
+FROM fortune_companies
+GROUP BY industry
+HAVING average_revenue >=150;
+
+# Which company in the Retail industry has the most revenue, and what is the total revenue?
+
+SELECT company_name, max(revenue)
+FROM fortune_companies
+WHERE industry = 'Retail'
